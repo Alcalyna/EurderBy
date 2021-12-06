@@ -1,5 +1,6 @@
 package org.calinh.eurderbylinh.api;
 
+import org.calinh.eurderbylinh.domain.user.Address;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

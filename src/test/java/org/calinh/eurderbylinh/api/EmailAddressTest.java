@@ -1,6 +1,6 @@
 package org.calinh.eurderbylinh.api;
 
-import org.calinh.eurderbylinh.exception.exceptions.EmailIsNotValidException;
+import org.calinh.eurderbylinh.domain.user.EmailAddress;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

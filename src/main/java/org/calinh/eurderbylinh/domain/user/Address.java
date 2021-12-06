@@ -1,4 +1,4 @@
-package org.calinh.eurderbylinh.api;
+package org.calinh.eurderbylinh.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;

@@ -1,4 +1,4 @@
-package org.calinh.eurderbylinh.api;
+package org.calinh.eurderbylinh.domain.user;
 
 import java.util.UUID;
 
