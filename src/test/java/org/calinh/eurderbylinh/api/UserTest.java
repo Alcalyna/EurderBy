@@ -26,6 +26,7 @@ class UserTest {
                 .withPassword("linh")
                 .withAddress(address)
                 .withPhoneNumber(new PhoneNumber("+32", "470111111"))
+                .withRole(User.Role.CUSTOMER)
                 .build();
 
         Assertions.assertEquals("Linh", user.getFirstName());
@@ -33,6 +34,7 @@ class UserTest {
         Assertions.assertEquals("linh", user.getEmailAddress().getUsername());
         Assertions.assertEquals("eurderby.com", user.getEmailAddress().getDomain());
         Assertions.assertEquals(address, user.getAddress());
+        Assertions.assertEquals(User.Role.CUSTOMER, user.getRole());
         Assertions.assertEquals("+32 470111111", user.getPhoneNumber().toString());
     }
 
