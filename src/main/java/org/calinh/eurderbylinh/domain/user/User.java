@@ -3,7 +3,7 @@ package org.calinh.eurderbylinh.domain.user;
 import java.util.UUID;
 
 public class User {
-    private String id;
+    private UUID id;
     private final String firstName;
     private final String lastName;
     private final EmailAddress emailAddress;
@@ -27,7 +27,7 @@ public class User {
         this.role = builder.role;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -56,7 +56,7 @@ public class User {
     }
 
     public static final class UserBuilder {
-        private String id;
+        private UUID id;
         private String firstName;
         private String lastName;
         private EmailAddress emailAddress;
@@ -77,7 +77,7 @@ public class User {
         }
 
         public UserBuilder withId() {
-            this.id = UUID.randomUUID().toString();
+            this.id = UUID.randomUUID();
             return this;
         }
 
@@ -115,8 +115,5 @@ public class User {
             this.role = role;
             return this;
         }
-
     }
-
-
 }

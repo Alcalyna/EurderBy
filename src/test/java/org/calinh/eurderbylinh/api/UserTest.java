@@ -7,6 +7,8 @@ import org.calinh.eurderbylinh.domain.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
 class UserTest {
 
     @Test
@@ -29,6 +31,7 @@ class UserTest {
                 .withRole(User.Role.CUSTOMER)
                 .build();
 
+        Assertions.assertEquals(UUID.class, user.getId().getClass());
         Assertions.assertEquals("Linh", user.getFirstName());
         Assertions.assertEquals("Nguyen", user.getLastName());
         Assertions.assertEquals("linh", user.getEmailAddress().getUsername());
