@@ -10,16 +10,24 @@ public class EmailAddress {
     private final String domain;
     private final String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
-    public String getFullEmail() {
-        return username + "@" + domain;
-    }
-
     public EmailAddress(String username, String domain) {
         if(!isValid(username, domain)) {
             throw new EmailIsNotValidException();
         }
         this.username = username;
         this.domain = domain;
+    }
+
+    public String getFullEmail() {
+        return username + "@" + domain;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getDomain() {
+        return domain;
     }
 
     public boolean isValid(String username, String domain) {
@@ -43,6 +51,5 @@ public class EmailAddress {
     public String toString() {
         return "EmailAddress{" + username + "@" + domain + "}";
     }
-
 
 }
