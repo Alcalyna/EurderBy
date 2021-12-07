@@ -20,7 +20,6 @@ public class UserController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public UserDto register(@RequestBody CreateUserDto newUser) {
-        System.out.println("newUser: " + newUser);
         return userService.addCustomer(newUser);
     }
 }

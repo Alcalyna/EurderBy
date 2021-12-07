@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 public class UserMapper {
 
     public UserDto mapUserToUserDto(User user) {
-        System.out.println("user " + user);
         return new UserDto()
                 .setId(user.getId())
                 .setAddress(user.getAddress())

@@ -21,7 +21,6 @@ public class UserService {
     public UserDto addCustomer(CreateUserDto createUserDto) {
         User newUser = userMapper.mapCreateUserDtoToUser(createUserDto);
         userRepository.save(newUser);
-        System.out.println("Dto " + userMapper.mapUserToUserDto(newUser));
         return userMapper.mapUserToUserDto(newUser);
     }
 }
