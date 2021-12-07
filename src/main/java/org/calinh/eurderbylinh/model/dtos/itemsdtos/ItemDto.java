@@ -1,9 +1,5 @@
 package org.calinh.eurderbylinh.model.dtos.itemsdtos;
 
-import org.calinh.eurderbylinh.domain.user.Item;
-
-import java.util.UUID;
-
 public class ItemDto {
     private String name;
     private String description;

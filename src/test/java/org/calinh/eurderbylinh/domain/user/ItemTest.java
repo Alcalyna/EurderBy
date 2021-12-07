@@ -1,5 +1,6 @@
 package org.calinh.eurderbylinh.domain.user;
 
+import org.calinh.eurderbylinh.domain.item.Item;
 import org.calinh.eurderbylinh.exception.exceptions.ItemInputIsNotValidException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

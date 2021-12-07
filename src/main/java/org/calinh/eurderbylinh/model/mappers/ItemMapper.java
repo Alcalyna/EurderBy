@@ -1,6 +1,6 @@
 package org.calinh.eurderbylinh.model.mappers;
 
-import org.calinh.eurderbylinh.domain.user.Item;
+import org.calinh.eurderbylinh.domain.item.Item;
 import org.calinh.eurderbylinh.model.dtos.itemsdtos.CreateItemDto;
 import org.calinh.eurderbylinh.model.dtos.itemsdtos.ItemDto;
 import org.springframework.stereotype.Component;

@@ -1,11 +1,10 @@
 package org.calinh.eurderbylinh.repository.items;
 
-import org.calinh.eurderbylinh.domain.user.Item;
+import org.calinh.eurderbylinh.domain.item.Item;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 @Component
 public class ItemDataFactory {

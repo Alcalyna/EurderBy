@@ -1,4 +1,4 @@
-package org.calinh.eurderbylinh.domain.user;
+package org.calinh.eurderbylinh.domain.item;
 
 import org.calinh.eurderbylinh.exception.exceptions.ItemInputIsNotValidException;
 
