@@ -1,5 +1,7 @@
 package org.calinh.eurderbylinh.domain.user;
 
+import org.calinh.eurderbylinh.exception.exceptions.UserInputIsNotValidException;
+
 import java.util.UUID;
 
 public class User {
@@ -17,6 +19,7 @@ public class User {
     }
 
     public User(UserBuilder builder) {
+        isValidInput(builder.firstName, builder.lastName);
         this.id = builder.id;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
@@ -118,6 +121,15 @@ public class User {
         public UserBuilder withRole(Role role) {
             this.role = role;
             return this;
+        }
+    }
+
+    public void isValidInput(String firstName, String lastName) {
+        if(firstName == null || firstName.trim() == "") {
+            throw new UserInputIsNotValidException("The first name should be provided!");
+        }
+        if(lastName == null || lastName.trim() == "") {
+            throw new UserInputIsNotValidException("The last name should be provided!");
         }
     }
 

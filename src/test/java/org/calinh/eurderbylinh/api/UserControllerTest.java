@@ -60,4 +60,5 @@ class UserControllerTest {
         Assertions.assertEquals("lala@eurderby.com", userDto.getEmailAddress().toString());
         Assertions.assertEquals(address, userDto.getAddress());
     }
+
 }

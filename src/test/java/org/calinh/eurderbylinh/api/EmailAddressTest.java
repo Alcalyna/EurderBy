@@ -30,4 +30,11 @@ class EmailAddressTest {
 
         Assertions.assertEquals("This email is not valid!",exception.getMessage());
      }
+
+    @Test
+    void givenEmptyUsername_ThrowError() {
+        Throwable exception = catchThrowable(() -> new EmailAddress("", "eurderby.com"));
+
+        Assertions.assertEquals("This email is not valid!",exception.getMessage());
+    }
 }

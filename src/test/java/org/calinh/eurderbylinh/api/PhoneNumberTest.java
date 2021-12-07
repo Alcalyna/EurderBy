@@ -21,4 +21,11 @@ class PhoneNumberTest {
 
         Assertions.assertEquals("The phone number is not correct!",exception.getMessage());
     }
+
+    @Test
+    public void givenEmptyNumber_ThrowNumber() {
+        Throwable exception = catchThrowable(() -> new PhoneNumber("98", ""));
+
+        Assertions.assertEquals("The phone number is not correct!",exception.getMessage());
+    }
 }
