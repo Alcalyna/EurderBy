@@ -1,10 +1,12 @@
 package org.calinh.eurderbylinh.domain.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.calinh.eurderbylinh.exception.exceptions.EmailIsNotValidException;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EmailAddress {
     private final String username;
     private final String domain;
@@ -49,7 +51,7 @@ public class EmailAddress {
 
     @Override
     public String toString() {
-        return "EmailAddress{" + username + "@" + domain + "}";
+        return username + "@" + domain;
     }
 
 }

@@ -1,9 +1,11 @@
 package org.calinh.eurderbylinh.domain.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.calinh.eurderbylinh.exception.exceptions.PhoneNumberIsNotValidException;
 
 import java.util.regex.Pattern;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PhoneNumber {
     private final String prefix;
     private final String number;
@@ -21,6 +23,14 @@ public class PhoneNumber {
 
     public boolean isValid(String prefix, String number) {
         return Pattern.compile(phoneRegex).matcher(prefix + number).matches();
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public String getNumber() {
+        return number;
     }
 
     @Override

@@ -55,6 +55,10 @@ public class User {
         return role;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public static final class UserBuilder {
         private UUID id;
         private String firstName;
@@ -115,5 +119,19 @@ public class User {
             this.role = role;
             return this;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", emailAddress=" + emailAddress +
+                ", password='" + password + '\'' +
+                ", address=" + address +
+                ", phoneNumber=" + phoneNumber +
+                ", role=" + role +
+                '}';
     }
 }
