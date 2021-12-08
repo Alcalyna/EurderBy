@@ -1,15 +1,21 @@
 package org.calinh.eurderbylinh.domain.item;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import org.calinh.eurderbylinh.exception.exceptions.ItemInputIsNotValidException;
 
 import java.util.UUID;
 
+@JsonDeserialize(builder = Item.ItemBuilder.class)
+@JsonPOJOBuilder(buildMethodName = "build", withPrefix = "with")
 public class Item {
     private final UUID id;
     private String name;
     private String description;
     private double price;
     private int amount;
+
 
     public Item(String name, String description, double price, int amount) {
         isValidInputs(name, description, price, amount);
@@ -43,10 +49,10 @@ public class Item {
         if (description == null || description.trim().equals("")) {
             throw new ItemInputIsNotValidException("The item's description should be provided!");
         }
-        if (price < 0) {
+        if (price <= 0) {
             throw new ItemInputIsNotValidException("The price should be positive!");
         }
-        if (amount < 0) {
+        if (amount <= 0) {
             throw new ItemInputIsNotValidException("The amount should be a positive integer!");
         }
     }
@@ -85,27 +91,27 @@ public class Item {
             return new ItemBuilder();
         }
 
-        public ItemBuilder withId(UUID id) {
+        public ItemBuilder withId(@JsonProperty("id") UUID id) {
             this.id = id;
             return this;
         }
 
-        public ItemBuilder withName(String name) {
+        public ItemBuilder withName(@JsonProperty("name")String name) {
             this.name = name;
             return this;
         }
 
-        public ItemBuilder withDescription(String description) {
+        public ItemBuilder withDescription(@JsonProperty("description")String description) {
             this.description = description;
             return this;
         }
 
-        public ItemBuilder withPrice(double price) {
+        public ItemBuilder withPrice(@JsonProperty("price") double price) {
             this.price = price;
             return this;
         }
 
-        public ItemBuilder withAmount(int amount) {
+        public ItemBuilder withAmount(@JsonProperty("amount") int amount) {
             this.amount = amount;
             return this;
         }
@@ -130,14 +136,14 @@ public class Item {
     }
 
     public Item setPrice(double price) {
-        if(price >= 0) {
+        if(price > 0) {
             this.price = price;
         }
         return this;
     }
 
     public Item setAmount(int amount) {
-        if(price >= 0) {
+        if(price > 0) {
             this.amount = amount;
         }
         return this;

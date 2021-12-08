@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path="orders")
 public class OrderController {
@@ -28,7 +30,14 @@ public class OrderController {
         securityService.validateAccess(authorization, Feature.ADD_ORDER);
         User currentUser = securityService.getCurrentUser(authorization);
         newOrder.setUserId(currentUser.getId());
-//        securityService.isCorrectUser(currentUser.getId(), newOrder.getUserId());
         return orderService.addOrder(newOrder);
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public List<OrderDto> getAllOrders(@RequestHeader String authorization) {
+        securityService.validateAccess(authorization, Feature.DISPLAY_ORDERS_PER_MEMBER);
+        User user = securityService.getCurrentUser(authorization);
+        return orderService.getOrdersByCustomerId(user.getId());
     }
 }

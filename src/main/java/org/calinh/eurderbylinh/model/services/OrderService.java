@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
@@ -57,5 +59,11 @@ public class OrderService {
         orderRepository.save(order);
         OrderDto orderDto = orderMapper.mapOrderToOrderDto(order);
         return orderMapper.mapOrderToOrderDto(order);
+    }
+
+    public List<OrderDto> getOrdersByCustomerId(UUID customerId) {
+        return orderRepository.getAllOrdersByCustomerId(customerId).stream()
+                .map(order -> orderMapper.mapOrderToOrderDto(order))
+                .collect(Collectors.toList());
     }
 }

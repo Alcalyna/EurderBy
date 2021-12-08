@@ -46,4 +46,5 @@ public class OrderDto {
     public double getTotal() {
         return total;
     }
+
 }

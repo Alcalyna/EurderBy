@@ -14,4 +14,13 @@ public class ItemGroupDto {
         return amount;
     }
 
+    public ItemGroupDto setItemId(UUID itemId) {
+        this.itemId = itemId;
+        return this;
+    }
+
+    public ItemGroupDto setAmount(int amount) {
+        this.amount = amount;
+        return this;
+    }
 }

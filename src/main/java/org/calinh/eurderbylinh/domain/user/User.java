@@ -17,7 +17,7 @@ public class User {
 
     public enum Role {
         ADMIN(List.of(Feature.ADD_ITEM, Feature.DISPLAY_CUSTOMERS, Feature.DISPLAY_CUSTOMER_DETAIL, Feature.DISPLAY_ITEMS, Feature.UPDATE_ITEM)),
-        CUSTOMER(List.of(Feature.ADD_ORDER, Feature.DISPLAY_ITEMS));
+        CUSTOMER(List.of(Feature.ADD_ORDER, Feature.DISPLAY_ITEMS, Feature.DISPLAY_ORDERS_PER_MEMBER));
 
         private List<Feature> featureList;
 
