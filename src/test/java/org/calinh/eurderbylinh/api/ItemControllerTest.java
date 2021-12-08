@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import static io.restassured.http.ContentType.JSON;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-
 class ItemControllerTest {
 
     @Value("${server.port}")
@@ -29,6 +28,7 @@ class ItemControllerTest {
 
         ItemDto itemDto = RestAssured
                 .given()
+                .header("authorization", "Basic YWRtaW5AZXVyZGVyYnkuY29tOmFkbWlu")
                 .body(createItemDto)
                 .accept(JSON)
                 .contentType(JSON)

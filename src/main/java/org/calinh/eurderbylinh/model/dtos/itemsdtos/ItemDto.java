@@ -1,11 +1,18 @@
 package org.calinh.eurderbylinh.model.dtos.itemsdtos;
 
+import java.util.UUID;
+
 public class ItemDto {
+    private UUID id;
     private String name;
     private String description;
     private double price;
     private int amount;
 
+    public ItemDto setId(UUID id) {
+        this.id = id;
+        return this;
+    }
 
     public ItemDto setName(String name) {
         this.name = name;
@@ -41,5 +48,9 @@ public class ItemDto {
 
     public int getAmount() {
         return amount;
+    }
+
+    public UUID getId() {
+        return id;
     }
 }

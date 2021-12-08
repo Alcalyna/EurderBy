@@ -2,6 +2,7 @@ package org.calinh.eurderbylinh.domain.user;
 
 import org.calinh.eurderbylinh.exception.exceptions.UserInputIsNotValidException;
 
+import java.util.List;
 import java.util.UUID;
 
 public class User {
@@ -15,11 +16,26 @@ public class User {
     private Role role;
 
     public enum Role {
-        ADMIN, CUSTOMER;
+        ADMIN(List.of(Feature.ADD_ITEM, Feature.DISPLAY_CUSTOMERS, Feature.DISPLAY_CUSTOMER_DETAIL, Feature.DISPLAY_ITEMS)),
+        CUSTOMER(List.of(Feature.ADD_ORDER, Feature.DISPLAY_ITEMS));
+
+        private List<Feature> featureList;
+
+        Role(List<Feature> featureList) {
+            this.featureList = featureList;
+        }
+
+        public boolean containsFeature(Feature feature) {
+            return featureList.contains(feature);
+        }
+    }
+
+    public boolean hasAccessTo(Feature feature) {
+        return this.role.containsFeature(feature);
     }
 
     public User(UserBuilder builder) {
-        isValidInput(builder.firstName, builder.lastName);
+        isValidInput(builder.firstName, builder.lastName, builder.phoneNumber);
         this.id = builder.id;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
@@ -124,12 +140,15 @@ public class User {
         }
     }
 
-    public void isValidInput(String firstName, String lastName) {
-        if(firstName == null || firstName.trim() == "") {
+    public void isValidInput(String firstName, String lastName, PhoneNumber phoneNumber) {
+        if (firstName == null || firstName.trim() == "") {
             throw new UserInputIsNotValidException("The first name should be provided!");
         }
-        if(lastName == null || lastName.trim() == "") {
+        if (lastName == null || lastName.trim() == "") {
             throw new UserInputIsNotValidException("The last name should be provided!");
+        }
+        if (phoneNumber == null) {
+            throw new UserInputIsNotValidException("The phone number should be provided!");
         }
     }
 

@@ -6,9 +6,12 @@ import org.calinh.eurderbylinh.model.dtos.itemsdtos.ItemDto;
 import org.calinh.eurderbylinh.model.mappers.ItemMapper;
 import org.calinh.eurderbylinh.repository.items.ItemDataFactory;
 import org.calinh.eurderbylinh.repository.items.ItemRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
 public class ItemService {
 
     ItemRepository itemRepository;
@@ -25,5 +28,11 @@ public class ItemService {
         Item item = itemMapper.mapCreateItemDtoToItem(newItem);
         itemRepository.save(item);
         return itemMapper.mapItemToItemDto(item);
+    }
+
+    public List<ItemDto> getAllItemsReposository() {
+        return itemRepository.getAllItems().stream()
+                .map(item -> itemMapper.mapItemToItemDto(item))
+                .collect(Collectors.toList());
     }
 }

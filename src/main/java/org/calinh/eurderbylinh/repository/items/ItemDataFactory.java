@@ -5,14 +5,21 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Component
 public class ItemDataFactory {
-    public Map<String, Item> getDefaultItems() {
-        Item item0 = new Item("Pulco Orange", "Better than the lemon one", 5.51, 5);
+    public Map<UUID, Item> getDefaultItems() {
+        Map<UUID, Item> result = new HashMap<>();
 
-        Map<String, Item> result = new HashMap<>();
-        result.put(item0.getName(), item0);
+        Item item0 = new Item("Pulco Orange", "Better than the lemon one", 5.51, 5);
+        result.put(item0.getId(), item0);
+
+        Item item1 = new Item("Fried noodles", "Asian cuisine", 10.60, 1);
+        result.put(item1.getId(), item1);
+
+        Item item2 = new Item("Apple", "Mac", 1000, 10);
+        result.put(item2.getId(), item2);
         return result;
     }
 }

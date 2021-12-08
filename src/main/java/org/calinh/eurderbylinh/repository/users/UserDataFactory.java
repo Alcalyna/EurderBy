@@ -2,6 +2,7 @@ package org.calinh.eurderbylinh.repository.users;
 
 import org.calinh.eurderbylinh.domain.user.Address;
 import org.calinh.eurderbylinh.domain.user.EmailAddress;
+import org.calinh.eurderbylinh.domain.user.PhoneNumber;
 import org.calinh.eurderbylinh.domain.user.User;
 import org.springframework.stereotype.Component;
 
@@ -13,17 +14,43 @@ import java.util.UUID;
 public class UserDataFactory {
 
     public Map<UUID, User> getDefaultUsers() {
-        User customer0 = User.UserBuilder.userBuilder()
-                .withAddress(Address.AddressBuilder.addressBuilder().withCity("Ghent").build())
-                .withEmailAddress(new EmailAddress("admin", "lolweb.com"))
+        Map<UUID, User> result = new HashMap<>();
+
+        User admin = User.UserBuilder.userBuilder()
+                .withId()
+                .withAddress(Address.AddressBuilder.addressBuilder()
+                        .withCity("Brussels")
+                        .withStreetName("Happiness street")
+                        .withStreetNumber("87")
+                        .withPostCode("1234")
+                        .build())
+                .withEmailAddress(new EmailAddress("admin", "eurderby.com"))
                 .withPassword("admin")
                 .withFirstName("Admin")
                 .withLastName("Istrator")
+                .withRole(User.Role.ADMIN)
+                .withPhoneNumber(new PhoneNumber("+32", "470151516"))
+                .build();
+        result.put(admin.getId(), admin);
+
+        User linh = User.UserBuilder.userBuilder()
+                .withId()
+                .withAddress(Address.AddressBuilder.addressBuilder()
+                        .withCity("Brussels")
+                        .withStreetName("Calinh street")
+                        .withStreetNumber("9")
+                        .withPostCode("1000")
+                        .build())
+                .withEmailAddress(new EmailAddress("linh", "eurderby.com"))
+                .withPassword("linh")
+                .withFirstName("Linh")
+                .withLastName("Nguyen")
                 .withRole(User.Role.CUSTOMER)
+                .withPhoneNumber(new PhoneNumber("+32", "470151515"))
                 .build();
 
-        Map<UUID, User> result = new HashMap<>();
-        result.put(customer0.getId(), customer0);
+        result.put(linh.getId(), linh);
+
         return result;
     }
 }
