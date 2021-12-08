@@ -2,6 +2,8 @@ package org.calinh.eurderbylinh.model.services;
 
 import org.calinh.eurderbylinh.domain.user.EmailAddress;
 import org.calinh.eurderbylinh.domain.user.Feature;
+import org.calinh.eurderbylinh.exception.exceptions.UserDoesNotExistException;
+import org.calinh.eurderbylinh.exception.exceptions.UserInputIsNotValidException;
 import org.calinh.eurderbylinh.exception.exceptions.UserNotAuthorizedException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,22 @@ class SecurityServiceTest {
 
         Assertions.assertEquals(UserNotAuthorizedException.class, exception.getClass());
         Assertions.assertEquals("You are not allowed to do this action.", exception.getMessage());
+    }
+
+    @Test
+    void validateAccess_WrongPassword() {
+        Throwable exception = catchThrowable(() -> securityService.validateAccess("Basic YWRtaW5AZXVyZGVyYnkuY29tOmFkbWlp", Feature.DISPLAY_CUSTOMER_DETAIL));
+
+        Assertions.assertEquals(UserInputIsNotValidException.class, exception.getClass());
+        Assertions.assertEquals("Sorry, wrong password!", exception.getMessage());
+    }
+
+    @Test
+    void validateAccess_UserNull() {
+        Throwable exception = catchThrowable(() -> securityService.validateAccess("Basic YWRtazdAZXVyZGVyYnkuY29tOmFkbWlp", Feature.DISPLAY_CUSTOMER_DETAIL));
+
+        Assertions.assertEquals(UserDoesNotExistException.class, exception.getClass());
+        Assertions.assertEquals("This user does not exist.", exception.getMessage());
     }
 
     @Test

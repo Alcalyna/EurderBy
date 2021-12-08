@@ -67,15 +67,4 @@ public class CreateUserDto {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "CreateUserDto{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", emailAddress=" + emailAddress +
-                ", password='" + password + '\'' +
-                ", address=" + address +
-                ", phoneNumber=" + phoneNumber +
-                '}';
-    }
 }

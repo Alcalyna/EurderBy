@@ -60,19 +60,6 @@ public class UserDto {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "UserDto{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", emailAddress=" + emailAddress +
-                ", password='" + password + '\'' +
-                ", address=" + address +
-                ", phoneNumber=" + phoneNumber +
-                ", role=" + role +
-                '}';
-    }
 
     public UUID getId() {
         return id;

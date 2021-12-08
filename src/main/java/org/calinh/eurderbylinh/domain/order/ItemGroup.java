@@ -23,12 +23,4 @@ public class ItemGroup {
         return amount;
     }
 
-    public LocalDate getShippingDate() {
-        return shippingDate;
-    }
-
-    public ItemGroup setItem(Item item) {
-        this.item = item;
-        return this;
-    }
 }
