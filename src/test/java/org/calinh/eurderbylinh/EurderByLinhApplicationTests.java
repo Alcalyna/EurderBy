@@ -11,9 +11,8 @@ class EurderByLinhApplicationTests {
 
     @Test
     void contextLoads() {
-//        Map<String, Object> props = new HashMap<>();
-//        props.put("server.port", 9999);
-//        EurderByLinhApplication.main(new String[]{});
+        System.getProperties().put("server.port", 4040);
+        EurderByLinhApplication.main(new String[]{});
     }
 
 }
