@@ -16,10 +16,6 @@ public class UserRepository {
         this.users = userDataFactory.getDefaultUsers();
     }
 
-    public Map<UUID, User> getUsers() {
-        return users;
-    }
-
     public User save(User user) {
         users.put(user.getId(), user);
         return user;

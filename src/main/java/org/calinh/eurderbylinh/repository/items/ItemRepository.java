@@ -16,10 +16,6 @@ public class ItemRepository {
         this.items = itemDataFactory.getDefaultItems();
     }
 
-    public Map<UUID, Item> getItems() {
-        return items;
-    }
-
     public Item save(Item item) {
         items.put(item.getId(), item);
         return item;

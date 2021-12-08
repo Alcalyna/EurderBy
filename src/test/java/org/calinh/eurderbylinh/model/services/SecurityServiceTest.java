@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.UUID;
+
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,6 +22,14 @@ class SecurityServiceTest {
     @Test
     void validateAccess() {
         Throwable exception = catchThrowable(() -> securityService.validateAccess("Basic bGluaEBldXJkZXJieS5jb206bGluaA==", Feature.DISPLAY_CUSTOMER_DETAIL));
+
+        Assertions.assertEquals(UserNotAuthorizedException.class, exception.getClass());
+        Assertions.assertEquals("You are not allowed to do this action.", exception.getMessage());
+    }
+
+    @Test
+    void isCorrectUser() {
+        Throwable exception = catchThrowable(() -> securityService.isCorrectUser(UUID.fromString("4f9b2fa5-3f32-440b-b19e-974ef2666c77"), UUID.fromString("4f9b2fa5-3f32-440b-b19e-974ef2666c78")));
 
         Assertions.assertEquals(UserNotAuthorizedException.class, exception.getClass());
         Assertions.assertEquals("You are not allowed to do this action.", exception.getMessage());

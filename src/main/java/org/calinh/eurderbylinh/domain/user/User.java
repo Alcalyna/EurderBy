@@ -171,17 +171,4 @@ public class User {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", emailAddress=" + emailAddress +
-                ", password='" + password + '\'' +
-                ", address=" + address +
-                ", phoneNumber=" + phoneNumber +
-                ", role=" + role +
-                '}';
-    }
 }

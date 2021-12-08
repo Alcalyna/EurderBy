@@ -153,14 +153,4 @@ public class Item {
         return message == null || message.trim().equals("");
     }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", amount=" + amount +
-                '}';
-    }
 }

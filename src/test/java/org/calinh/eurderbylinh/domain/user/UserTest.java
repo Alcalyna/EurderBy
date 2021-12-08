@@ -64,4 +64,38 @@ class UserTest {
         Assertions.assertEquals(exception.getClass(), UserInputIsNotValidException.class);
         Assertions.assertEquals("The first name should be provided!",exception.getMessage());
     }
+
+    @Test
+    void createUserWithoutLastName() {
+        Throwable exception = catchThrowable(() -> User.UserBuilder.userBuilder()
+                .withId()
+                .withFirstName("Linh")
+                .withLastName("")
+                .withEmailAddress(new EmailAddress("linh", "eurderby.com"))
+                .withPassword("linh")
+                .withAddress(address)
+                .withPhoneNumber(new PhoneNumber("+32", "470111111"))
+                .withRole(User.Role.CUSTOMER)
+                .build());
+
+        Assertions.assertEquals(exception.getClass(), UserInputIsNotValidException.class);
+        Assertions.assertEquals("The last name should be provided!",exception.getMessage());
+    }
+
+    @Test
+    void createUserWithoutPhoneNumber() {
+        Throwable exception = catchThrowable(() -> User.UserBuilder.userBuilder()
+                .withId()
+                .withFirstName("Linh")
+                .withLastName("Nguyen")
+                .withEmailAddress(new EmailAddress("linh", "eurderby.com"))
+                .withPassword("linh")
+                .withAddress(address)
+                .withPhoneNumber(null)
+                .withRole(User.Role.CUSTOMER)
+                .build());
+
+        Assertions.assertEquals(exception.getClass(), UserInputIsNotValidException.class);
+        Assertions.assertEquals("The phone number should be provided!",exception.getMessage());
+    }
 }
