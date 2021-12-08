@@ -28,11 +28,6 @@ public class Order {
         return itemGroupList;
     }
 
-    public Order setTotal(double total) {
-        this.total = total;
-        return this;
-    }
-
     public double computeTotal(List<ItemGroup> itemsGroup) {
         double price = 0;
         for (ItemGroup itemGroup: itemsGroup) {

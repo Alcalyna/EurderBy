@@ -31,9 +31,4 @@ public class ItemGroup {
         this.item = item;
         return this;
     }
-
-    public ItemGroup setShippingDate(LocalDate shippingDate) {
-        this.shippingDate = shippingDate;
-        return this;
-    }
 }
