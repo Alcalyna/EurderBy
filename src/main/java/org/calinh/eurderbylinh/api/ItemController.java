@@ -3,6 +3,7 @@ package org.calinh.eurderbylinh.api;
 import org.calinh.eurderbylinh.domain.user.Feature;
 import org.calinh.eurderbylinh.model.dtos.itemsdtos.CreateItemDto;
 import org.calinh.eurderbylinh.model.dtos.itemsdtos.ItemDto;
+import org.calinh.eurderbylinh.model.dtos.itemsdtos.UpdateItemDto;
 import org.calinh.eurderbylinh.model.services.ItemService;
 import org.calinh.eurderbylinh.model.services.SecurityService;
 import org.springframework.http.HttpStatus;
@@ -35,5 +36,13 @@ public class ItemController {
     public List<ItemDto> getAllItems(@RequestHeader String authorization) {
         securityService.validateAccess(authorization, Feature.DISPLAY_ITEMS);
         return itemService.getAllItemsReposository();
+    }
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public ItemDto updateItem(@RequestBody UpdateItemDto updateItemDto, @RequestHeader String authorization) {
+        securityService.validateAccess(authorization, Feature.UPDATE_ITEM);
+        System.out.println(updateItemDto);
+        return itemService.updateItem(updateItemDto);
     }
 }

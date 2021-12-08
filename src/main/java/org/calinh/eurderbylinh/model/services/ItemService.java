@@ -3,6 +3,7 @@ package org.calinh.eurderbylinh.model.services;
 import org.calinh.eurderbylinh.domain.item.Item;
 import org.calinh.eurderbylinh.model.dtos.itemsdtos.CreateItemDto;
 import org.calinh.eurderbylinh.model.dtos.itemsdtos.ItemDto;
+import org.calinh.eurderbylinh.model.dtos.itemsdtos.UpdateItemDto;
 import org.calinh.eurderbylinh.model.mappers.ItemMapper;
 import org.calinh.eurderbylinh.repository.items.ItemDataFactory;
 import org.calinh.eurderbylinh.repository.items.ItemRepository;
@@ -34,5 +35,15 @@ public class ItemService {
         return itemRepository.getAllItems().stream()
                 .map(item -> itemMapper.mapItemToItemDto(item))
                 .collect(Collectors.toList());
+    }
+
+    public ItemDto updateItem(UpdateItemDto updateItemDto) {
+        Item item = itemRepository.getById(updateItemDto.getItemId());
+        item.setName(updateItemDto.getName());
+        item.setDescription(updateItemDto.getDescription());
+        item.setPrice(updateItemDto.getPrice());
+        item.setAmount(updateItemDto.getAmount());
+        itemRepository.save(item);
+        return itemMapper.mapItemToItemDto(item);
     }
 }

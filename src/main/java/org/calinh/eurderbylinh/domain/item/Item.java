@@ -115,6 +115,38 @@ public class Item {
         }
     }
 
+    public Item setName(String name) {
+        if(!isEmpty(name)) {
+            this.name = name;
+        }
+        return this;
+    }
+
+    public Item setDescription(String description) {
+        if(!isEmpty(name)) {
+            this.description = description;
+        }
+        return this;
+    }
+
+    public Item setPrice(double price) {
+        if(price >= 0) {
+            this.price = price;
+        }
+        return this;
+    }
+
+    public Item setAmount(int amount) {
+        if(price >= 0) {
+            this.amount = amount;
+        }
+        return this;
+    }
+
+    public boolean isEmpty(String message) {
+        return message == null || message.trim().equals("");
+    }
+
     @Override
     public String toString() {
         return "Item{" +
