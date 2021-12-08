@@ -17,7 +17,7 @@ public class UserDataFactory {
         Map<UUID, User> result = new HashMap<>();
 
         User admin = User.UserBuilder.userBuilder()
-                .withId()
+                .withIdNotRandom(UUID.fromString("4f9b2fa5-3f32-440b-b19e-974ef2666c77"))
                 .withAddress(Address.AddressBuilder.addressBuilder()
                         .withCity("Brussels")
                         .withStreetName("Happiness street")
@@ -34,7 +34,7 @@ public class UserDataFactory {
         result.put(admin.getId(), admin);
 
         User linh = User.UserBuilder.userBuilder()
-                .withId()
+                .withIdNotRandom(UUID.fromString("3f9b2fa5-3f32-440b-b19e-974ef2666c77"))
                 .withAddress(Address.AddressBuilder.addressBuilder()
                         .withCity("Brussels")
                         .withStreetName("Calinh street")

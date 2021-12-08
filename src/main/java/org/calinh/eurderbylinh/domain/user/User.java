@@ -3,6 +3,7 @@ package org.calinh.eurderbylinh.domain.user;
 import org.calinh.eurderbylinh.exception.exceptions.UserInputIsNotValidException;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class User {
@@ -104,6 +105,11 @@ public class User {
             return this;
         }
 
+        public UserBuilder withIdNotRandom(UUID id) {
+            this.id = id;
+            return this;
+        }
+
         public UserBuilder withFirstName(String firstName) {
             this.firstName = firstName;
             return this;
@@ -150,6 +156,19 @@ public class User {
         if (phoneNumber == null) {
             throw new UserInputIsNotValidException("The phone number should be provided!");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override
