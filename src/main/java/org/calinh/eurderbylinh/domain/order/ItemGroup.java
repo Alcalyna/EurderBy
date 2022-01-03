@@ -15,12 +15,21 @@ public class ItemGroup {
         this.shippingDate = shippingDate;
     }
 
+    public ItemGroup(Item item, int amount) {
+        this.item = item;
+        this.amount = amount;
+    }
+
     public Item getItem() {
         return item;
     }
 
-    public double getAmount() {
+    public int getAmount() {
         return amount;
     }
 
+    public ItemGroup setShippingDate(LocalDate shippingDate) {
+        this.shippingDate = shippingDate;
+        return this;
+    }
 }

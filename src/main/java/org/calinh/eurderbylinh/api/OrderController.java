@@ -4,6 +4,7 @@ import org.calinh.eurderbylinh.domain.user.Feature;
 import org.calinh.eurderbylinh.domain.user.User;
 import org.calinh.eurderbylinh.model.dtos.orderdtos.CreateOrderDto;
 import org.calinh.eurderbylinh.model.dtos.orderdtos.OrderDto;
+import org.calinh.eurderbylinh.model.dtos.orderdtos.ReorderDto;
 import org.calinh.eurderbylinh.model.services.OrderService;
 import org.calinh.eurderbylinh.model.services.SecurityService;
 import org.springframework.http.HttpStatus;
@@ -40,4 +41,12 @@ public class OrderController {
         User user = securityService.getCurrentUser(authorization);
         return orderService.getOrdersByCustomerId(user.getId());
     }
+
+//    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public OrderDto reorder(@RequestBody ReorderDto reorderDto, @RequestHeader String authorization) {
+//        securityService.validateAccess(authorization, Feature.REORDER);
+//        User user = securityService.getCurrentUser(authorization);
+//        return orderService.orderAgain(reorderDto, user);
+//    }
 }

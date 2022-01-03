@@ -33,6 +33,13 @@
             <artifactId>spring-mock-mvc</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>5.20.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

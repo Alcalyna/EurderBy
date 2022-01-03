@@ -1,6 +1,5 @@
 package org.calinh.eurderbylinh.model.services;
 
-import org.calinh.eurderbylinh.domain.user.EmailAddress;
 import org.calinh.eurderbylinh.domain.user.Feature;
 import org.calinh.eurderbylinh.exception.exceptions.UserDoesNotExistException;
 import org.calinh.eurderbylinh.exception.exceptions.UserInputIsNotValidException;
@@ -13,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.UUID;
 
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class SecurityServiceTest {

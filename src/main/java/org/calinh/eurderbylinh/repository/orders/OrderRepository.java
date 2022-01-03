@@ -1,6 +1,7 @@
 package org.calinh.eurderbylinh.repository.orders;
 
 import org.calinh.eurderbylinh.domain.order.Order;
+import org.calinh.eurderbylinh.exception.exceptions.UserNotAuthorizedException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -25,5 +26,18 @@ public class OrderRepository {
         return orders.values().stream()
                 .filter(order -> order.getCustomerId() == customerId)
                 .collect(Collectors.toList());
+    }
+
+    public Order getById(UUID id) {
+        return orders.get(id);
+    }
+
+    public boolean matchOrderCustomer(UUID customerId) {
+        for(Order order: orders.values()) {
+            if(order.getCustomerId() == customerId) {
+                return true;
+            }
+        }
+        throw new UserNotAuthorizedException();
     }
 }
